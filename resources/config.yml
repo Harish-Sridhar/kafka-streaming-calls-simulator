@@ -1,0 +1,10 @@
+[Logging]
+  log_level: INFO
+[Application]
+  StartTime: 01-11-2018 00:00:00
+  EndTime: 31-12-2018 23:59:59
+  PeriodDurationInSeconds: 300
+  PeriodEvents: 300
+[Kafka]
+  bootstrap_servers: ['localhost:9092']
+  topic: "call_msgs"

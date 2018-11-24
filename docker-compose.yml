@@ -1,0 +1,42 @@
+version: '3'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: localzookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      - localinstance
+
+  localkafka:
+    image: wurstmeister/kafka
+    container_name: localkafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    networks:
+      - localinstance
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: localkafka
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: "call_msgs"
+      OVERRIDE_HOST_NAME: "localkafka"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  myproducer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      START_TIME: "01/01/2018 00:00:00"
+      END_TIME: "31/12/2018 23:59:59"
+    container_name: calls_simulator
+    depends_on:
+      - localkafka
+    networks:
+      - localinstance
+
+networks:
+  localinstance:

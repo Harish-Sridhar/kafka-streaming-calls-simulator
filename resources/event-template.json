@@ -1,0 +1,15 @@
+{
+  "call_id":"",
+  "call_group_id":"",
+  "call_start_time":"",
+  "call_queue_start_time":"",
+  "call_queue_end_time":"",
+  "call_handling_start_time":"",
+  "call_handling_end_time":"",
+  "call_end_time":"",
+  "department_handled":"",
+  "customer_id":"",
+  "customer_location":"",
+  "product":"",
+  "call_reason":""
+}
