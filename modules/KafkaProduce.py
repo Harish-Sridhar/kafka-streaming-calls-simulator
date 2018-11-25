@@ -1,6 +1,7 @@
 import confluent_kafka as ck
 import configparser
 import os
+import json
 
 # set up properties
 base_dir = os.path.dirname(os.path.dirname(__file__))
@@ -13,11 +14,12 @@ topic = config['Kafka']['topic']
 # set up producer
 producer = ck.Producer({'bootstrap.servers': bootstrap_servers})
 
+
 def produce_messages(queue):
     while True:
-        msg=queue.get()
-        key=msg['call_id']
-        producer.produce(topic=topic, value=msg,
-                         key=key)
+        msg = queue.get()
+        key = msg['call_id']
+        producer.produce(topic=topic, value=json.dumps(msg),
+                         key=json.dumps(key))
         producer.poll(0)
         queue.task_done()

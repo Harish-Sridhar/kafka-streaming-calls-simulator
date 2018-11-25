@@ -93,12 +93,12 @@ def generate_message_timestamp(current_time):
         v_handling_start_time = ""
         v_handling_end_time = ""
     v_call_end_time = current_time
-    message_timestamps["call_start_time"] = v_call_start_time
-    message_timestamps["call_queue_start_time"] = v_queue_start_time
-    message_timestamps["call_queue_end_time"] = v_queue_end_time
-    message_timestamps["call_handling_start_time"] = v_handling_start_time
-    message_timestamps["call_handling_end_time"] = v_handling_end_time
-    message_timestamps["call_end_time"] = v_call_end_time
+    message_timestamps["call_start_time"] = str(v_call_start_time)
+    message_timestamps["call_queue_start_time"] = str(v_queue_start_time)
+    message_timestamps["call_queue_end_time"] = str(v_queue_end_time)
+    message_timestamps["call_handling_start_time"] = str(v_handling_start_time)
+    message_timestamps["call_handling_end_time"] = str(v_handling_end_time)
+    message_timestamps["call_end_time"] = str(v_call_end_time)
     return message_timestamps
 
 

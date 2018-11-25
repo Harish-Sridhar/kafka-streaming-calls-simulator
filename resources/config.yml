@@ -6,5 +6,5 @@
   PeriodDurationInSeconds: 300
   PeriodEvents: 300
 [Kafka]
-  bootstrap_servers: ['localhost:9092']
-  topic: "call_msgs"
+  bootstrap_servers: localkafka:9092
+  topic: call_msgs
