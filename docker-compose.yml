@@ -20,8 +20,7 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: localkafka
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_CREATE_TOPICS: "call_msgs"
-      OVERRIDE_HOST_NAME: "localkafka"
+      KAFKA_CREATE_TOPICS: "call_msgs:1:1"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 

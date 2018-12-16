@@ -5,6 +5,7 @@ import random
 import math
 from datetime import datetime, timedelta
 from modules import generate_random_msg, generate_customer_id
+import time
 
 # Read from default config
 base_dir = os.path.dirname(os.path.dirname(__file__))
@@ -51,6 +52,12 @@ def generate_messages(queue):
             queue.put(generate_random_msg(current_time))
 
         current_time = current_time + timedelta(seconds=period_duration/period_events_count)
+
+        if current_time>datetime.now():
+            sleep_duration = (current_time-datetime.now()).total_seconds()
+            if sleep_duration <0:
+                sleep_duration=0
+            time.sleep(sleep_duration)
 
 
 
