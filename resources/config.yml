@@ -1,8 +1,8 @@
 [Logging]
-  log_level: INFO
+  log_level: DEBUG
 [Application]
   StartTime: 01-11-2018 00:00:00
-  EndTime: 31-12-2018 21:50:59
+  EndTime: 31-12-2019 21:50:59
   PeriodDurationInSeconds: 300
   PeriodEvents: 60
 [Kafka]

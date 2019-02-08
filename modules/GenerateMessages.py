@@ -13,7 +13,7 @@ config = configparser.ConfigParser()
 config.read(base_dir + "/resources/config.yml")
 
 # set up logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=config['Logging']['log_level'])
 logger = logging.getLogger("Message-Generator")
 
 # set up generation inputs
@@ -35,6 +35,7 @@ def generate_messages(queue):
     msg_count = 0
     while current_time < gen_end_time:
         if current_time > next_period_start_time or current_time == gen_start_time:
+            logger.debug("Generating messages between " + str(current_time) + " to " + str(next_period_start_time))
             next_period_start_time = current_time + timedelta(seconds=period_duration)
             repeat_customer_count = 2
             repeat_customer_msgs = 0
@@ -44,6 +45,8 @@ def generate_messages(queue):
             repeat_customer_msgs = random.randint(5, 15)
             repeat_customer_mod = math.floor(period_events_count / repeat_customer_count / repeat_customer_msgs)
             repeat_customer_count -= 1
+            logger.debug("The customer + " + str(repeat_customers) + " calls repeatedly for " + str(repeat_customer_msgs) + " in the current period.")
+
 
         if msg_count % repeat_customer_mod == 0 and repeat_customer_msgs > 0:
             queue.put(generate_random_msg(current_time, repeat_customers[0]))
@@ -58,6 +61,3 @@ def generate_messages(queue):
             if sleep_duration <0:
                 sleep_duration=0
             time.sleep(sleep_duration)
-
-
-
