@@ -52,8 +52,10 @@ Each period, it selects 2 customers randomly and generates repeat calls.
     4. average queue time.
     5. average call duration.
     6. total number of repeated customers.
+6. Combine Department Id and product ID with static data set and include them in result.
+7. Combine Customer ID with data from database and include customer contact details in the result.
 
-   
+
 # Running Locally
 Execute `docker-compose up -d` in the home directory.
 This builds and runs all the containers.

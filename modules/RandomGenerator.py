@@ -32,14 +32,14 @@ while success == 0:
         queue_duration_percentage_probability = np.flip(queue_duration_percentage)/queue_duration_percentage.sum()
         pass
 
-departments = ["Orders", "Billings", "Service", "Delivery_Returns", "Others"]
-products = ["TV", "Phone", "Computer"]
+departments = ["1", "2", "3", "4", "5"]
+products = ["1", "2", "3"]
 call_reason = {
-    'Orders' : ["Order not generated", "Order Incorrect", "Telephone Order", "Order Cancellation", "Pre order", "Order Modification"],
-    'Billings' : ["Bill not generated", "Bill Incorrect", "Advance Bill payment"],
-    "Service" : ["Service Disruption" , "Service Cancellation", "New Service", "Service Enquiry"],
-    "Delivery_Returns" : ["Return Order", "Delivery Information", "Schedule Delivery", "Product Not Delivered", "Partial Delivery", "Damaged Delivery", "Delayed Delivery", "Refund"],
-    "Others" : ["Online site not working"]
+    '1': ["Order not generated", "Order Incorrect", "Telephone Order", "Order Cancellation", "Pre order", "Order Modification"],
+    '2': ["Bill not generated", "Bill Incorrect", "Advance Bill payment"],
+    "3": ["Service Disruption" , "Service Cancellation", "New Service", "Service Enquiry"],
+    "4": ["Return Order", "Delivery Information", "Schedule Delivery", "Product Not Delivered", "Partial Delivery", "Damaged Delivery", "Delayed Delivery", "Refund"],
+    "5": ["Online site not working"]
 }
 
 
