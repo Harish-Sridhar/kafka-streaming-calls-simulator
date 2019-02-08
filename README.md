@@ -17,6 +17,25 @@ Each period, it selects 2 customers randomly and generates repeat calls.
 |PeriodDurationInSeconds| How long does a period last        |
 |PeriodEvents | How many events to produce in a period       |
 
+# Msg Schema
+```Json
+{
+  "call_id":"",
+  "call_group_id":"",
+  "call_start_time":"",
+  "call_queue_start_time":"",
+  "call_queue_end_time":"",
+  "call_handling_start_time":"",
+  "call_handling_end_time":"",
+  "call_end_time":"",
+  "department_handled":"",
+  "customer_id":"",
+  "customer_location":"",
+  "product":"",
+  "call_reason":""
+}
+
+```
 
 # What uses cases can we solve with this
 1. Calculate total time it takes to handle a customer call.
@@ -34,9 +53,10 @@ Each period, it selects 2 customers randomly and generates repeat calls.
     5. average call duration.
     6. total number of repeated customers.
 
-
+   
 # Running Locally
-`docker-compose up -d` - Runs all the containers
+Execute `docker-compose up -d` in the home directory.
+This builds and runs all the containers.
 
 # Verifying app
 execute the below commands. Kafka console consumer should display incoming messages.
