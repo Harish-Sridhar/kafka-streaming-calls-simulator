@@ -30,11 +30,11 @@ def produce_messages(queue):
             msg = queue.get()
             key = msg['call_id']
             producer.produce(topic=topic, value=json.dumps(msg),
-            key=json.dumps(key))
+            key=str(key))
             producer.poll(0)
             queue.task_done()
             msg_count += 1
-            while msg_count%100==0:
+            if msg_count%100==0:
                 logger.debug("Produced 100 messages successfully.")
 
         except Exception as E:

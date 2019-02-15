@@ -34,9 +34,9 @@ def generate_messages(queue):
     next_period_start_time = current_time + timedelta(seconds=period_duration)
     msg_count = 0
     while current_time < gen_end_time:
-        if current_time > next_period_start_time or current_time == gen_start_time:
-            logger.debug("Generating messages between " + str(current_time) + " to " + str(next_period_start_time))
+        if current_time >= next_period_start_time or current_time == gen_start_time:
             next_period_start_time = current_time + timedelta(seconds=period_duration)
+            logger.debug("Generating messages between " + str(current_time) + " to " + str(next_period_start_time))
             repeat_customer_count = 2
             repeat_customer_msgs = 0
 
@@ -58,6 +58,6 @@ def generate_messages(queue):
 
         if current_time>datetime.now():
             sleep_duration = (current_time-datetime.now()).total_seconds()
-            if sleep_duration <0:
+            if sleep_duration < 0:
                 sleep_duration=0
             time.sleep(sleep_duration)

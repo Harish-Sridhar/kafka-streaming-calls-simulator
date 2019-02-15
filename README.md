@@ -65,7 +65,7 @@ execute the below commands. Kafka console consumer should display incoming messa
 ```
    docker exec -it  localkafka /bin/bash
    cd /opt/kafka/bin
-   ./kafka-console-consumer.sh --bootstrap-server localkafka:9092 --topic call_msgs
+   ./kafka-console-consumer.sh --bootstrap-server localkafka:9092 --property print.key=true --property key.separator="-" --topic call_msgs
 ```
 
 

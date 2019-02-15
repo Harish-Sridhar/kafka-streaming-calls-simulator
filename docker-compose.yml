@@ -5,8 +5,6 @@ services:
     container_name: localzookeeper
     ports:
       - "2181:2181"
-    networks:
-      - localinstance
 
   localkafka:
     image: wurstmeister/kafka
@@ -15,8 +13,6 @@ services:
       - zookeeper
     ports:
       - "9092:9092"
-    networks:
-      - localinstance
     environment:
       KAFKA_ADVERTISED_HOST_NAME: localkafka
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
@@ -34,8 +30,8 @@ services:
     container_name: calls_simulator
     depends_on:
       - localkafka
-    networks:
-      - localinstance
 
 networks:
-  localinstance:
+  default:
+    external:
+      name: my-docker-network
