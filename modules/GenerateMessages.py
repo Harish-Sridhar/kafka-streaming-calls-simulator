@@ -49,7 +49,7 @@ def generate_messages(queue):
 
 
         if msg_count % repeat_customer_mod == 0 and repeat_customer_msgs > 0:
-            queue.put(generate_random_msg(current_time, repeat_customers[0]))
+            queue.put(generate_random_msg(current_time, repeat_customers))
             repeat_customer_msgs -= 1
         else:
             queue.put(generate_random_msg(current_time))

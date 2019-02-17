@@ -75,7 +75,7 @@ def generate_call_reason(department):
 
 
 def generate_customer_id():
-    return "".join(random.choice(string.ascii_uppercase + string.digits) for n in range(15)),
+    return "".join(random.choice(string.ascii_uppercase + string.digits) for n in range(15))
 
 
 def generate_message_timestamp(current_time):
